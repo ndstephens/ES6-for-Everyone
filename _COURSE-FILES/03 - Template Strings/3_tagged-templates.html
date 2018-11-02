@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Tagged Templates</title>
+    <style>
+      .hl {
+        background: #ffc600;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script>
+      // 'strings' will be an array containing all the strings that exist before and (always) after (even if empty) all inserted values (the strings array will always have a length 1 greater than the values).  in this example they will be ['My dog's name is ', ' and he is ', ' years old']
+
+      // the '...values' rest param will put all values into an array.  in this example they are ['Snickers', 100], provided from 'name' and 'age'
+
+      // we can now do operations on both or either, in this case effecting each inserted value
+
+      // each value ['Snickers', 100] is put into a span tag with the class 'hl' which adds a yellow background AND makes the content editable
+
+      function highlight( strings, ...values ) {
+        let str = '';
+        strings.forEach( ( string, i ) => {
+          // b/c the strings array is always one longer than the values array, on our final string there will not be a corresponding value at that same index (will be 'undefined'), therefore (values[i] || '')
+          str += `${string} <span contenteditable class="hl">${values[i] || ''}</span>`;
+        } );
+        return str;
+      }
+
+      const name = 'Snickers';
+      const age = 100;
+
+      // the 'highlight' function is first run on the following template string, and whatever is returned from 'highlight' is then passed to 'sentence'
+      const sentence = highlight`My dog's name is ${name} and he is ${age} years old`;
+
+      document.body.innerHTML = sentence;
+      console.log( sentence );
+
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Template Strings!</title>
+  </head>
+
+  <body>
+    <script>
+      const beer = {
+        name: 'Belgian Wit',
+        brewery: 'Steam Whistle Brewery',
+        keywords: ['pale', 'cloudy', 'spiced', 'crisp']
+      };
+
+      // a 'render function'
+      function renderKeywords( keywords ) {
+        // don't forget to use 'join' after the map function or you'll get commas rendered to the document between list items
+        return `
+      <ul>
+        ${keywords.map( keyword => `<li>${keyword}</li>` ).join( '' )}
+      </ul>
+    `;
+      }
+
+      // can include functions into template strings
+      const markup = `
+    <div class="beer">
+      <h2>${beer.name}</h2>
+      <p class="brewery">${beer.brewery}</p>
+      ${renderKeywords( beer.keywords )}
+    </div>
+  `;
+
+      document.body.innerHTML = markup;
+
+    </script>
+  </body>
+
+</html>

@@ -38,3 +38,17 @@
   instead **inherited** from whatever **THE PARENT SCOPE** is.
   - A **REGULAR FUNCTION** will bind to **WHATEVER CALLS IT**, such as a DOM
     element with its click-handler.
+
+## Template Strings
+
+- Can use **looping** with a **`map` function** to print out multiple list items
+  for example from an array
+  - **remember** to finish map function with **`.join('')`**
+- Create a **render function** to separate looping logic and **insert** that
+  function into a template literal expression
+- Can also use **`ternary expressions`**
+- **`Tagged templates`** let you **parse** a template with a **function**. You
+  can then **manipulate** the sections that are **strings** and/or the
+  **values** (the placeholder expressions)
+- **Remember** to **`sanitize`** any data you receive from `inputs` for
+  **nefarious code**

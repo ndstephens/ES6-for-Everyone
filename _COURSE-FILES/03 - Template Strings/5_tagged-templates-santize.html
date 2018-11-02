@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Tagged Templates</title>
+
+    <style>
+      abbr {
+        border-bottom: 1px dotted grey;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="bio">
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/0.8.2/purify.min.js"></script>
+    <script>
+      function sanitize( strings, ...values ) {
+        const dirty = strings.reduce( ( sentence, string, i ) => `${sentence}${string}${values[i] || ''}`, '' );
+        // use the sanitize function to strip out known nefarious code
+        return DOMPurify.sanitize( dirty );
+      }
+
+      const first = 'Wes';
+      // hypothetical user inputting nefarious code
+      const aboutMe = `I love to do evil <img src="http://unsplash.it/100/100?random" onload="alert('you got hacked');" />`;
+
+      // apply sanitize to the template string
+      const html = sanitize`
+    <h3>${first}</h3>
+    <p>${aboutMe}</p>
+  `;
+
+      const bio = document.querySelector( '.bio' );
+      // could also use sanitize here (bio.innerHTML = DOMPurify.sanitize(html))
+      bio.innerHTML = html;
+
+    </script>
+  </body>
+
+</html>
