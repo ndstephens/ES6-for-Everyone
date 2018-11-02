@@ -52,3 +52,9 @@
   **values** (the placeholder expressions)
 - **Remember** to **`sanitize`** any data you receive from `inputs` for
   **nefarious code**
+
+## Additional String Improvements
+
+- new functions are `.startsWith()`, `.endsWith()`, `.includes()`, and
+  `.repeat()`
+- see commented notes within the course html file
