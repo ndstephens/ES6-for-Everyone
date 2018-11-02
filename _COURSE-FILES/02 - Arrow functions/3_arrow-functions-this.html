@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Arrow Functions</title>
+  </head>
+
+  <body>
+
+    <style>
+      .wrap {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: sans-serif;
+        font-weight: 100;
+        color: white;
+      }
+
+      .box {
+        background: black url(https://unsplash.it/1500/1500?image=560&blur=0.5) center fixed no-repeat;
+        width: 50px;
+        height: 50px;
+        padding: 50px;
+        transition: width 0.2s, height 0.6s;
+        position: relative;
+      }
+
+      .box.opening {
+        width: 500px;
+        height: 500px;
+      }
+
+      .box h2 {
+        position: absolute;
+        width: 100%;
+        font-size: 100px;
+        transform: translateX(-200%);
+        transition: all 0.5s;
+        top: 0;
+      }
+
+      .box p {
+        position: absolute;
+        width: 100%;
+        transform: translateX(200%);
+        transition: all 0.5s;
+        bottom: 0;
+      }
+
+      .box.open>* {
+        transform: translateX(0%);
+      }
+    </style>
+
+    <div class="wrap">
+      <div class="box">
+        <h2>Wes Bos</h2>
+        <p class="social">@wesbos</p>
+      </div>
+    </div>
+
+    <script>
+      const box = document.querySelector( '.box' )
+
+      // by using a REGULAR FUNCTION here we auto-bind 'this' to the dom element being clicked (the element that called the function).  this is case when NOT to use an arrow function
+      box.addEventListener( 'click', function () {
+        let first = 'opening'
+        let second = 'open'
+
+        // if the classes are currently applied (only checking 'opening' in the case), then swap the order in which they'll be toggled off (removed)
+        if ( this.classList.contains( first ) ) {
+          // swap them
+          [first, second] = [second, first]
+        }
+
+        // apply the first class, wait a quarter second, then apply the other class (in reverse order when they are removed)
+        this.classList.toggle( first )
+
+        // here we need to use an arrow function so that 'this' remains bound to the outside scope (inherits the outer scope), NOT to the function that called it (which isn't bound to anything so it binds 'this' to the 'window')
+        setTimeout( () => {
+          this.classList.toggle( second )
+        }, 250 )
+      } )
+    </script>
+
+  </body>
+
+</html>
