@@ -166,3 +166,7 @@
     - use **array destructuring** to put each response into its own variable
     - or within another `Promise.all([])` **map over each response** calling
       `data.json()` on each
+
+## Symbols
+
+- will review symbols again later on...
