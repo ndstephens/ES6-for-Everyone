@@ -140,3 +140,29 @@
 - **Method Definitions** no longer require the `:` or `function` keyword
 - **Computed Property Names/Keys** can be created **within** the object literal
 - Use the **`shift()`** method to create an object from 2 arrays
+
+## Promises
+
+- Functions that use `Promises` (such as ajax API calls) **don't actually return
+  any data**, but instead **return a `Promise`**
+- when the `Promise` is **RESOLVED** the `then` method will be called
+- if **REJECTED** the `catch` method will be called (or the second argument of
+  'then')
+- `then` and `catch` are basically **callbacks** that run **ONLY when the
+  `Promise` is done** (resolved or rejected)
+- Useful to create a `Promise` **WITHIN a function** so that you can **call the
+  `Promise` when you need it**. Otherwise it will **execute immediately** when
+  it is hit in the code
+- `Promises` are great for **flow control** within your code. **`Async/Await`**
+  is even better as shown later
+- If you **call a function that returns a `Promise` within a `then` method** you
+  must **explicitly `return` that function's results** so that its `Promise` can
+  resolve to the next `then` method (see example code)
+- **Chaining `Promises` with `Promise.all()`**
+  - as long as the `Promises` are **not directly dependent on each other** (ie
+    the second one requires the result of the first one) then you can **fire
+    them all off immediately** at the same time
+  - then process all the returned data after all have resolved
+    - use **array destructuring** to put each response into its own variable
+    - or within another `Promise.all()` **map over each response** calling
+      `data.json()` on each

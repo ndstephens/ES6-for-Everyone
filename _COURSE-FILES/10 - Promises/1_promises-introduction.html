@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Promises!</title>
+  </head>
+
+  <body>
+    <script>
+
+      const postsPromise = fetch( 'https://wesbos.com/wp-json/wp/v2/posts' );
+      // the return from 'fetch', that is stored in postsPromise, is NOT the data itself...but a PROMISE
+      // when the Promise is RESOLVED the 'then' method will be called
+      // if REJECTED the 'catch' method will be called (or the second argument of 'then')
+      // 'then' and 'catch' are basically callbacks that run ONLY when the Promise is done (resolved or rejected)
+
+      postsPromise
+        // any type of data can be retrieved from 'fetch', not just JSON
+        // raw data is returned that needs to be converted to JSON
+        .then( data => data.json() )
+        // 'data.json()' returns (arrow function implicit return here) a Promise that resolves with the body text parsed as JSON, therefore another '.then' is needed
+        .then( data => { console.log( data ) } )
+        // catch is called if the Promise is rejected (returns an error)
+        .catch( ( err ) => {
+          console.error( err );
+        } )
+
+    </script>
+  </body>
+
+</html>

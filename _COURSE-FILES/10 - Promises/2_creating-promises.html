@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Creating Promises!</title>
+  </head>
+
+  <body>
+    <script>
+
+      // a PROMISE is stored in 'p'
+      const p = new Promise( ( resolve, reject ) => {
+        setTimeout( () => {
+          // resolve( 'Wes is cool' )
+          // should THROW AN ERROR in Reject by using 'Error('blah')'
+          reject( Error( 'Err wes isn\'t cool' ) );
+        }, 1000 );
+      } );
+
+      p
+        .then( data => {
+          console.log( data );
+        } )
+        .catch( err => {
+          console.error( err );
+        } );
+
+    </script>
+  </body>
+
+</html>
