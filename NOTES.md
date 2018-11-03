@@ -98,3 +98,19 @@
 - Easily loop over the **characters** (including spaces, etc) of a **`String`**
 - Loop through a **`NodeList`** (soon Node List should have all the
   functionality of regular Arrays)
+
+## Arrays
+
+- **`Array.from`** is a **static** function and not called off the **prototype**
+  - converts an **Array-like** object into an **`Array`**
+  - such as **`Array.from(NodeList)`** or **`Array.from(arguments)`**
+- **`Array.of`** converts all its **arguments** into an **`Array`**
+  - looks like you can usually use a `rest param` instead in most cases
+- **`find()`** and **`findIndex()`** both take a **callback function** to search
+  through an array
+  - `find()` returns an entire **element** or item from an array
+  - `findIndex()` returns the **index** of the element
+- **`some()`** and **`every()`** both take a **callback function** to search
+  through an array
+  - `some()` returns `true` if **at least one** element satisfies the condition
+  - `every()` returns `true` if **every** element satisfies the condition
