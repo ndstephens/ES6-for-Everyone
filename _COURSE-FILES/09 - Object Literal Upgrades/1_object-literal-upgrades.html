@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Object Literal Upgrades</title>
+  </head>
+
+  <body>
+    <script>
+      const first = 'snickers';
+      const last = 'bos';
+      const age = 2;
+      const breed = 'King Charles Cav';
+
+      // OBJECT PROPERTIES
+      // if the key and value are the same, no need to repeat (ie last: last)
+      const dog = {
+        firstName: first,
+        last,
+        age,
+        breed,
+        pals: ['Hugo', 'Sunny']
+      };
+      console.log( dog );
+
+      // ------------------
+      //
+      // METHOD DEFINITIONS (still maintains 'this' relation with the object)
+      const modal = {
+        // old way...
+        create: function ( selector ) {
+
+        },
+        // new way...
+        open( content ) {
+
+        },
+        close( goodbye ) {
+
+        }
+      }
+
+      // ------------------
+      //
+      // (used in example below for Computed Property Names)
+      function invertColor( color ) {
+        return '#' + ( "000000" + ( 0xFFFFFF ^ parseInt( color.substring( 1 ), 16 ) ).toString( 16 ) ).slice( -6 );
+      }
+
+      const key = 'pocketColor';
+      const value = '#ffc600';
+
+      // COMPUTED PROPERTY NAMES/KEYS (within the object literal INSTEAD of outside of it)
+      const tShirt = {
+        [key]: value,
+        [`${key}Opposite`]: invertColor( value )
+      };
+
+      // ------------------
+      //
+      // Use 2 arrays to create an object with COMPUTED PROPERTY KEYS
+      const keys = ['size', 'color', 'weight'];
+      const values = ['medium', 'red', 100];
+
+      const shirt = {
+        [keys.shift()]: values.shift(),
+        [keys.shift()]: values.shift(),
+        [keys.shift()]: values.shift(),
+      }
+      console.log( shirt );
+
+
+    </script>
+  </body>
+
+</html>

@@ -133,3 +133,10 @@
   the **opposite** of each other
 - **Use `Spread`** to **input arguments** into a **Function call**
 - **Use `Rest`** as a **parameter** in a **Function definition**
+
+## Object Literal Updates
+
+- **Object Properties** with the **same `key` and `value` don't need repeating**
+- **Method Definitions** no longer require the `:` or `function` keyword
+- **Computed Property Names/Keys** can be created **within** the object literal
+- Use the **`shift()`** method to create an object from 2 arrays
