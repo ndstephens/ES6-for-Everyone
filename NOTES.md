@@ -76,3 +76,25 @@
 - Destructuring with a **FUNCTION** is done by destructuring the **arguments in
   the function definition** with optional **default values**
   - when you **call the function** you must provide an **object as the input**
+
+## Iterables and Looping (For-of loop)
+
+- **`For-of`** loop is used to loop over any type of data that is an iterable
+  - such as an `Array`, a `String`, a `Map`, a `Set`, a `Generator`, `arguments`
+    object, a `NodeList`, etc
+  - can **NOT** use on `Objects`
+- It improves upon `forEach()` and `for-in` loops in that it does **NOT cycle
+  through items in the prototype** (as do for-in loops) and can have loop cycles
+  **aborted or skipped** using conditionals with the keywords **`break`** and
+  **`continue`** (unlike forEach loops)
+- If you want the **index of each element** in the array you're iterating over
+  with the `for-of` loop you can use `Generators` by accessing the `Iterator` of
+  the array using **`arr.entries()`**
+  - it will **return a 2 element array for each element** in the original
+    containing the **index and the value** (use destructing to then capture
+    those elements)
+- Use the `for-of` loop to iterate over the **`arguments`** object
+  - usually just convert it to an Array and use something like `reduce`
+- Easily loop over the **characters** (including spaces, etc) of a **`String`**
+- Loop through a **`NodeList`** (soon Node List should have all the
+  functionality of regular Arrays)

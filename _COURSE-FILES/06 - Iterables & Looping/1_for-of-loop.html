@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Iterables & Looping</title>
+  </head>
+
+  <body>
+    <script>
+      /* eslint-disable */
+      Array.prototype.shuffle = function () {
+        var i = this.length, j, temp;
+        if ( i == 0 ) return this;
+        while ( --i ) {
+          j = Math.floor( Math.random() * ( i + 1 ) );
+          temp = this[i];
+          this[i] = this[j];
+          this[j] = temp;
+        }
+        return this;
+      };
+
+      const cuts = ['Chuck', 'Brisket', 'Shank', 'Short Rib'];
+
+      cuts.shop = 'MM MEats';
+
+      // for (let i = 0; i < cuts.length; i++) {
+      //   console.log(cuts[i]);
+      // }
+
+      //
+      // ** With a 'forEach' loop you can NOT abort or skip a cycle of the loop using either 'break' or 'continue'
+      // ** the following 'if-statement' will NOT WORK
+      //
+      // cuts.forEach((cut) => {
+      //   console.log(cut);
+      //   if(cut === 'Brisket') {
+      //     continue;
+      //   }
+      // });
+
+      //
+      // ** A 'for-in' loop only reads the index 'key' (the index number) when used with an array
+      // ** it will also cycle through EVERYTHING, including properties and methods added to the prototype (such as 'shuffle' and 'cuts.shop' up above)
+      //
+      // for (const index in cuts) {
+      //   console.log(cuts[index]);
+      // }
+
+      // no issues with items being added to the prototype
+      // can abort and skip cycles with 'break' and 'continue'
+      for ( const cut of cuts ) {
+        if ( cut === 'Brisket' ) {
+          continue;
+        }
+        console.log( cut );
+      }
+
+    </script>
+  </body>
+
+</html>
