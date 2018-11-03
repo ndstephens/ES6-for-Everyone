@@ -114,3 +114,22 @@
   through an array
   - `some()` returns `true` if **at least one** element satisfies the condition
   - `every()` returns `true` if **every** element satisfies the condition
+
+## ...Spread and ...Rest
+
+- **`Spread`** works on **any `Iterable`** such as `Strings`, `Arrays`, etc
+  - great for **unpacking** a **string into an array of characters** similar to
+    using **`string.split('')`**
+  - does **NOT** make a **REFERENCE** to the original array (pure copy)
+  - can use spread to turn **array-like objects** into Arrays, similar to
+    **`Array.from()`**
+  - use spread to **inject** an array of items as **`arguments`** into a
+    `Function` (similar to using **`.apply(this, [array-of-inputs])`**)
+- **`Rest`** will **pack** a **list of items** into an **`Array`**
+  - use as a **parameter** in a **Function definition**
+  - useful with **destructuring**
+- You can think of **`Spread`** as **unpacking** an item (an Iterable), and
+  **`Rest`** as **packing** a group of items (into an Array). They are basically
+  the **opposite** of each other
+- **Use `Spread`** to **input arguments** into a **Function call**
+- **Use `Rest`** as a **parameter** in a **Function definition**

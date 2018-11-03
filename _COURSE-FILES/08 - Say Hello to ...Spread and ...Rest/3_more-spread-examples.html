@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Spread Examples</title>
+  </head>
+
+  <body>
+    <div class="people">
+      <p>Wes</p>
+      <p>Kait</p>
+      <p>Randy</p>
+    </div>
+    <script>
+      const people = Array.from( document.querySelectorAll( '.people p' ) );
+      // could also use spread
+      // const people = [...document.querySelectorAll('.people p')]
+      const names = people.map( ( person ) => person.textContent );
+
+      const deepDish = {
+        pizzaName: 'Deep Dish',
+        size: 'Medium',
+        ingredients: ['Marinara', 'Italian Sausage', 'Dough', 'Cheese']
+      };
+      // remember, it makes a TRUE COPY, NOT A REFERENCE
+      const shoppingList = ['Milk', 'Flour', ...deepDish.ingredients];
+
+      //
+      // we want to remove the third 'mean' comment
+      const comments = [
+        { id: 209384, text: 'I love your dog!' },
+        { id: 523423, text: 'Cuuute! 🐐' },
+        { id: 632429, text: 'You are so dumb' },
+        { id: 192834, text: 'Nice work on this wes!' },
+      ];
+      const id = 632429;
+      // first find the index of the one to remove
+      const commentIndex = comments.findIndex( comment => comment.id === id );
+      // make a new array of comments by grabbing all the comments BEFORE the one to remove, all the comments AFTER the one to remove, and SPREAD both of the results into the new array
+      const newComments = [
+        ...comments.slice( 0, commentIndex ),
+        ...comments.slice( commentIndex + 1 )];
+      // then you could do something like 'comments = newComments' that way you replace the comments without mutating the original array
+      console.log( newComments );
+
+    </script>
+  </body>
+
+</html>

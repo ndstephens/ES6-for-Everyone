@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Spread Examples</title>
+  </head>
+
+  <body>
+    <script>
+      const inventors = ['Einstein', 'Newton', 'Galileo'];
+      const newInventors = ['Musk', 'Jobs'];
+      // spreading your input arguments into the function
+      inventors.push( ...newInventors );
+
+      // similar to old school usage of .apply()
+      // inventors.push.apply(inventors(this), newInventors)
+
+      //
+      //
+      function sayHi( first, last ) {
+        alert( `Hey there ${first} ${last}` );
+      }
+
+      const name = ['Wes', 'Bos'];
+      // spreading your input arguments into the function
+      sayHi( ...name );
+
+    </script>
+  </body>
+
+</html>

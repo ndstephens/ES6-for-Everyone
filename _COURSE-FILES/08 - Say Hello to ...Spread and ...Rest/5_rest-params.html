@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>The ...Rest Param</title>
+  </head>
+
+  <body>
+    <script>
+      // for grabbing an unknown number of input args, while specifically grabbing one or more at the start
+      function convertCurrency( rate, ...amounts ) {
+        return amounts.map( amount => amount * rate );
+      }
+      const amounts = convertCurrency( 1.54, 10, 23, 52, 1, 56 );
+      console.log( amounts );
+
+      //
+      // for Destructing
+      const runner = ['Wes Bos', 123, 5.5, 5, 3, 6, 35];
+      const [name, id, ...runs] = runner;
+      console.log( name, id, runs );
+
+      // destructuring
+      const team = ['Wes', 'Kait', 'Lux', 'Sheena', 'Kelly'];
+      const [captain, assistant, ...players] = team;
+      console.log( captain, assistant, players )
+
+    </script>
+  </body>
+
+</html>

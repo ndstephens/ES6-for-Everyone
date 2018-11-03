@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>The ...Spread Operator</title>
+  </head>
+
+  <body>
+    <script>
+
+      // with STRINGS
+      console.log( ...'Nate' )
+      console.log( [...'Nate'] )
+
+      // with ARRAYS
+      const featured = ['Deep Dish', 'Pepperoni', 'Hawaiian'];
+      const specialty = ['Meatzza', 'Spicy Mama', 'Margherita'];
+      const pizzas = [...featured, 'veg', ...specialty];
+
+      // (copy) make a REFERENCE (usually DON'T want to do this)
+      let fridayPizzas = pizzas // bad idea
+      // pure copy (NOT BY REFERENCE)
+      fridayPizzas = [].concat( pizzas ) // old school way
+      // or using SPREAD (NOT A REFERENCE)
+      fridayPizzas = [...pizzas];
+
+    </script>
+  </body>
+
+</html>
