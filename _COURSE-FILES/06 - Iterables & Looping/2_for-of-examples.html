@@ -23,37 +23,33 @@
 
       // 'cuts.entries' returns an Iterator that supplies the index and value of each element in the array as it's called (ie [0, 'Chuck'])
       // we can then use array destructuring to capture the index and value of each element and use them in a template string
-      //
-      // for (const [i, cut] of cuts.entries()) {
-      //   console.log(`${cut} is the ${i + 1} item`);
-      // }
+      for ( const [i, cut] of cuts.entries() ) {
+        console.log( `${cut} is the ${i + 1} item` );
+      }
 
       //
       // Iterate over the 'arguments' object (Array-ish)
       // usually just convert it to an Array and use something like reduce
-      //
-      // function addUpNumbers() {
-      //   let total = 0;
-      //   for (const num of arguments) {
-      //     total += num;
-      //   }
-      //   console.log(total);
-      //   return total;
-      // }
-      //
-      // addUpNumbers(10,23,52,34,12,13,123);
+      function addUpNumbers() {
+        let total = 0;
+        for ( const num of arguments ) {
+          total += num;
+        }
+        console.log( total );
+        return total;
+      }
+
+      addUpNumbers( 10, 23, 52, 34, 12, 13, 123 );
 
       //
       // Loop over a string
-      //
-      // const name = 'Wes Bos';
-      // for (const char of name) {
-      //   console.log(char);
-      // }
+      const name = 'Wes Bos';
+      for ( const char of name ) {
+        console.log( char );
+      }
 
       //
       // Loop through a NodeList
-      //
       const ps = document.querySelectorAll( 'p' );
       for ( const paragraph of ps ) {
         paragraph.addEventListener( 'click', function () {
