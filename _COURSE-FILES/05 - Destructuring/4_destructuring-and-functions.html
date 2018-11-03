@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Destructuring in Action!</title>
+  </head>
+
+  <body>
+    <script>
+      function convertCurrency( amount ) {
+        const converted = {
+          USD: amount * 0.76,
+          GPB: amount * 0.53,
+          AUD: amount * 1.01,
+          MEX: amount * 13.30
+        };
+        return converted;
+      }
+
+      // prior way:
+      // const hundo = convertCurrency( 100 )
+      // console.log( hundo )
+
+      // Destructure a returned object (the order doesn't matter with an object, just that the variable names match the object's keys)
+      const { USD, GPB, AUD, MEX } = convertCurrency( 100 )
+      console.log( USD, GPB, AUD, MEX )
+
+      // can use default named arguments if you're passing in an object
+      // makes the inputs ORDER INDEPENDENT
+      // ** NOTICE you must set the entire destructing object to a blank object in case no parameters are inputted when the function is called
+      function tipCalc( { total = 100, tip = 0.15, tax = 0.13 } = {} ) {
+        return total + ( tip * total ) + ( tax * total );
+      }
+      // order of inputs doesn't matter here since it's an object and will be destructured
+      const bill = tipCalc( { tip: 0.20, total: 200 } );
+      console.log( bill );
+
+    </script>
+  </body>
+
+</html>

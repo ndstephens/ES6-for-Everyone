@@ -58,3 +58,21 @@
 - new functions are `.startsWith()`, `.endsWith()`, `.includes()`, and
   `.repeat()`
 - see commented notes within the course html file
+
+## Destructuring
+
+- Destructured **OBJECT** variables use the **same name** as the **object key**
+  who's value they are copying, **OR** can be **renamed** using a colon `:`
+  - the **order doesn't matter** with an object, just that the **variable names
+    match the object's keys**
+  - **only need to include the ones you want**, since you're matching by name
+  - can be given **default values** with the assignment operator `=`
+- Destructured **ARRAY** variables are **given a name**, the order of which
+  correspond to the order within the array.
+  - can **skip array elements** by simply putting an **empty space** in the
+    corresponding field of the destructuring elements
+  - use the **`rest param`** to capture **remaining elements** (must be the
+    **last** destructuring element)
+- Destructuring with a **FUNCTION** is done by destructuring the **arguments in
+  the function definition** with optional **default values**
+  - when you **call the function** you must provide an **object as the input**

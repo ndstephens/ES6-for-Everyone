@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Destructuring!</title>
+  </head>
+
+  <body>
+    <script>
+      const person = {
+        first: 'Wes',
+        last: 'Bos',
+        country: 'Canada',
+        city: 'Hamilton',
+        twitter: '@wesbos'
+      };
+
+      const { first, last, twitter } = person;
+
+      const wes = {
+        first: 'Wes',
+        last: 'Bos',
+        links: {
+          social: {
+            twitter: 'https://twitter.com/wesbos',
+            facebook: 'https://facebook.com/wesbos.developer',
+          },
+          web: {
+            blog: 'https://wesbos.com'
+          }
+        }
+      };
+
+      // can rename with ':'.  The variables are now 'tweet' and 'fb'
+      // can destructure from deep within nested objects (wes.links.social)
+      const { twitter: tweet, facebook: fb } = wes.links.social;
+
+      const settings = {
+        width: 300,
+        color: 'black'
+      }  // height, fontSize not included
+
+      // Setting default values.  'height' and 'fontSize' were never provided in 'settings' so they will use the default settings of '100' and '25'.  however 'width' and 'color' do get their values from 'settings' and their default values are ignored
+      const { width = 100, height = 100, color = 'blue', fontSize = 25 } = settings;
+      // width === 300 (not 100)
+      // height === 100 (default value)
+      // color === 'black' (not 'blue')
+      // fontSize === 25 (default value)
+
+    </script>
+  </body>
+
+</html>

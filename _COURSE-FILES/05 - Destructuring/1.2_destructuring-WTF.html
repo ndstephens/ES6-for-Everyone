@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Destructuring!</title>
+  </head>
+
+  <body>
+    <script>
+      // Object Destructuring with variable renaming & default values
+      // the renaming happens regardless
+      // then 'width' destructures its value from {w: 800}
+      // h / 'height' isn't provided so its default value is used
+      const { w: width = 400, h: height = 500 } = { w: 800 }
+  // width === 800 (renamed and destructured from {w: 800})
+  // height === 500 (created/renamed and uses default value)
+
+    </script>
+  </body>
+
+</html>
