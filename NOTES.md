@@ -158,11 +158,11 @@
 - If you **call a function that returns a `Promise` within a `then` method** you
   must **explicitly `return` that function's results** so that its `Promise` can
   resolve to the next `then` method (see example code)
-- **Chaining `Promises` with `Promise.all()`**
+- **Chaining `Promises` with `Promise.all([])`**
   - as long as the `Promises` are **not directly dependent on each other** (ie
     the second one requires the result of the first one) then you can **fire
     them all off immediately** at the same time
   - then process all the returned data after all have resolved
     - use **array destructuring** to put each response into its own variable
-    - or within another `Promise.all()` **map over each response** calling
+    - or within another `Promise.all([])` **map over each response** calling
       `data.json()` on each

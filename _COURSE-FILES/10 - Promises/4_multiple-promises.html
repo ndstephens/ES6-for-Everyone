@@ -37,6 +37,7 @@
       Promise
         .all( [postsPromise, streetCarsPromise] )
         .then( responses => {
+          // Use another Promise.all() to map over all response with res.json()
           return Promise.all( responses.map( res => res.json() ) )
         } )
         .then( responses => {
