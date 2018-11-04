@@ -1,0 +1,27 @@
+{
+  "name": "ES6-for-Everyone",
+  "version": "1.0.0",
+  "description": "A course from Wes Bos I did reviewing all JS updates since ES2015",
+  "main": "data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ndstephens/ES6-for-Everyone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ndstephens/ES6-for-Everyone/issues"
+  },
+  "homepage": "https://github.com/ndstephens/ES6-for-Everyone#readme",
+  "devDependencies": {
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1"
+  }
+}

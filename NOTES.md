@@ -170,3 +170,63 @@
 ## Symbols
 
 - will review symbols again later on...
+
+## Eslint
+
+- **All `Eslint` dependencies MUST/SHOULD** be saved **locally** to your project
+  (in **devDependencies** -D)
+- Create an **`.eslintrc.json`** file in your **home directory `~`** to be used
+  **globally** on all projects (your master eslint config file)
+  - **eslint JSON files can accept COMMENTS, regardless of the warnings given**
+- Can also have a **local-to-your-project** `.eslintrc.json` file in the
+  **project's root**
+  - **can simply copy the global `.eslintrc.json` and paste into root of
+    project**
+  - OR to **extend** from the global file, this local file will **begin with**:
+  ```json
+  {
+    "extends": "/Users/ndstephens/.eslintrc.json"
+  }
+  ```
+  - can extend it with `rules` specific to that project
+- To use along with **`Prettier`**, for now leave the `prettier-eslint` option
+  **OFF**
+  - if left **on** it will **first** format with `Prettier`, but **then follow
+    up with** `eslint --fix`
+  - this will cause `eslint` to **reformat the document** based on its
+    formatting rules
+  - for now best to adjust `eslint` formatting rules over time until you find
+    the set you like and agree with, then maybe turn `prettier-eslint` back on
+- **For adjusting eslint `rules`:**
+  - `0` is the same as `"off"`
+  - `1` is the same as `"warn"`
+  - `2` is the same as `"error"`
+  - certain rules can contain more specific setting options. see website docs
+- **File specific settings**
+  - at the **top** of the file in **block comments** adjust the specific rule
+  - for example, you may need to use undefined globals for something like Google
+    Analytics (ga.track())
+  - at the **top of the file** type `/* globals ga */`
+  - or **disable a rule** with `/* eslint-disable no-console */`
+- **Line specific settings**
+  - **before** the line you want to ignore write `/* eslint-disable (rule) */`
+  - **after** the line re-enable the rule with `/* eslint-enable (rule) */`
+  ```js
+  /* eslint-disable no-console */
+  console.log('bullshit')
+  /* eslint-enable no-console */
+  ```
+- **OR TO IGNORE ALL RULES (whole file or line(s) of code) THEN SIMPLY WRITE**
+  ```js
+  /* eslint-disable */
+  if ('bullshit') {
+    const ignore = 'this shit'
+  }
+  /* eslint-enable */
+  ```
+  - **ignoring any specific rules**
+- **PLUGINS** for adding **extra linting features**, such as being library or
+  framework specific, or linting JS that's in HTML or MD, etc etc
+- **ESLINT BEFORE COMMIT** if you want to only allow eslint passing code to be
+  committed then rewatch last video and use the `commit-msg.txt` as shown to
+  setup shell script
