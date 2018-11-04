@@ -1,0 +1,19 @@
+{
+  "name": "es6-modules",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "base-64": "^0.1.0",
+    "jsonp": "^0.2.1",
+    "lodash": "^4.17.11",
+    "parcel-bundler": "^1.10.3",
+    "slug": "^0.9.2"
+  }
+}

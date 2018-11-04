@@ -4,3 +4,4 @@ haters/
 *.log
 updates/
 test.js
+.cache/

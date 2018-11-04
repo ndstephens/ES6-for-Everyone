@@ -230,3 +230,31 @@
 - **ESLINT BEFORE COMMIT** if you want to only allow eslint passing code to be
   committed then rewatch last video and use the `commit-msg.txt` as shown to
   setup shell script
+
+## Modules
+
+- **VARIABLES ARE NOT GLOBAL WITH MODULES**
+  - variables are always scoped to either their **function, block, or to the
+    module they exist in**
+- **THERE ARE 2 TYPES OF EXPORTING IN ES6**
+  - **`DEFAULT EXPORT`** allows you to `export` something as the `default`
+    - `import` by its **name** or **renamed**
+    - **can only export ONE DEFAULT per module**
+    - usually reserved for the **main thing** the module does
+  - **`NAMED EXPORTS`** which means you `export` it by its name
+    - `import` by its **name** or **renamed using `originalName as newName`**
+      syntax
+    - can also be `exported` using **`originalName as newName`** syntax
+    - `imported` in curly braces, **can be multiple names comma separated**
+    - **can have multiple named exports per module**
+    - usually used with **methods and variables** you'll want to **pluck out**
+      from the module
+
+```js
+import defaultItem from './folder/module-file'
+import renamedDefaultItem from './folder/module-file'
+import { namedItem } from './folder/module-file'
+import { namedItem as changedName } from './folder/module-file'
+import { namedItem, namedItem2 } from './folder/module-file'
+import defaultItem, { namedItem, namedItem2 } from './folder/module-file'
+```
