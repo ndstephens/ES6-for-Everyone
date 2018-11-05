@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Generators</title>
+  </head>
+
+  <body>
+    <script>
+      // This whole thing basically represents what Async/Await now does (it is a generator)
+      // Replace the '*' with 'async'
+      // Replace 'yield' with 'await'
+
+
+      // the Generator Function
+      // representing the idea of data from one resolved ajax request being relied on by the following one in a synchronous manner
+      function* steps() {
+        console.log( 'fetching beers' );
+        const beers = yield ajax( 'http://api.react.beer/v2/search?q=hops&type=beer' );
+        console.log( beers );
+
+        console.log( 'fetching wes' );
+        const wes = yield ajax( 'https://api.github.com/users/wesbos' );
+        console.log( wes );
+
+        console.log( 'fetching fat joe' );
+        const fatJoe = yield ajax( 'https://api.discogs.com/artists/51988' );
+        console.log( fatJoe );
+      }
+
+      // Create the Generator
+      const dataGen = steps();
+
+      // Make the first 'next()' call to fire it off
+      dataGen.next(); // kick it off
+
+      function ajax( url ) {
+        fetch( url )
+          .then( data => data.json() )
+          // each time the ajax request is resolved, another 'next()' is called and the 'data' is passed into the variable.  it could then, in theory, be used by the following 'yield' statement (ajax request)
+          .then( data => dataGen.next( data ) )
+      }
+
+      // this is very useful if the resolved data from one yield/ajax request was needed not only before the following one started (synchronous), but it's resolved data was also relied on by the following request
+
+    </script>
+  </body>
+
+</html>

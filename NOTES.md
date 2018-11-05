@@ -341,3 +341,28 @@ class Dog extends Animal {
   - interesting how you can make a custom `Class` into an extension of an
     `Array` object and then add some extra features (looks similar to how React
     works)
+
+## Generators
+
+- A **`Generator`** is a basically a **function that you can start and stop** or
+  **pause for an indefinite amount of time**
+  - you can **pass information to it at a later point in time** (or rather
+    **during the process**)
+- you put an **`*`** after the `function` keyword **OR** before the **function
+  name**
+  > `function* myGenerator() {...}`
+   <!-- prettier ignore  -->
+  > `function *myGenerator() {...}`
+- Use a keyword **`yield`** to **pause** or **"return for now"**
+  - it will **return the item following it** until the **function is called
+    again**
+- To **run a `Generator`** you first need to **invoke** the Generator function
+  and **store it in a variable**
+  - need to call **`.next()`** to **move the function along until it hits a
+    `yield` keyword, or to complete the function**
+  - an **`Object`** is returned that contains the property **`value`** (what
+    follows `yield`), and a property **`done`**
+    - `done` is **`false`** if there is more left for the function to run (even
+      after the **last `yield` statement**)
+    - `done` is **`true`** if the `Generator` is complete
+- Work great with `for-of` loops
