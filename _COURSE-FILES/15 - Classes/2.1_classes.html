@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Inheritance Review</title>
+  </head>
+
+  <body>
+    <script>
+
+      class Dog {
+        constructor( name, breed ) {
+          this.name = name;
+          this.breed = breed;
+        }
+        bark() {
+          console.log( `Bark Bark! My name is ${this.name}` );
+        }
+        cuddle() {
+          console.log( `I love you owner!` );
+        }
+        // static methods are called on the Class itself (Dog.info()), not on instances of the Class (snickers.info() <-- NO!)
+        static info() {
+          console.log( 'Dogs are not as great as cats' )
+        }
+        // GETTERS and SETTERS are called on by the instances, however they are used like PROPERTIES, NOT METHODS (see below)
+        get description() {
+          return `${this.name} is a ${this.breed} type of dog`
+        }
+        // GETTERS and SETTERS can operate on properties when defined or mutated, and as they're retrieved (and in the process create properties on the instance that didn't previously exist)
+        get nickname() {
+          if ( this.nick ) {
+            return this.nick.toUpperCase()
+          }
+        }
+        set nickname( value ) {
+          this.nick = value.toString().trim()
+        }
+      }
+
+      const snickers = new Dog( 'Snickers', 'King Charles' );
+      const sunny = new Dog( 'Sunny', 'Golden Doodle' );
+
+      // calling the static method
+      Dog.info() // 'Dogs are not as great as cats'
+
+      // calling a GETTER, notice it's not called like a function (no ()), but instead like a property
+      console.log( snickers.description ) // Snickers is a King Charles...
+
+      // using a SETTER
+      snickers.nickname = '   coco  ' // nick === 'coco'
+      // using the GETTER of the same name
+      console.log( snickers.nickname ) // 'COCO'
+
+
+    </script>
+  </body>
+
+</html>

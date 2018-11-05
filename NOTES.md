@@ -258,3 +258,86 @@ import { namedItem as changedName } from './folder/module-file'
 import { namedItem, namedItem2 } from './folder/module-file'
 import defaultItem, { namedItem, namedItem2 } from './folder/module-file'
 ```
+
+## Classes
+
+- There are **Class Declarations** (most common) and **Class Expressions**
+
+```js
+// Class Declaration
+class Dog {...}
+
+// Class Expression
+const Dog = class {...}
+```
+
+- The only **`method`** that is **REQUIRED** is the **`CONSTRUCTOR`** (not
+  called a constructor function)
+  - the `constructor` is what happens when someone creates a **new instance**
+    from the `Class`
+  - looks the same as the **object literal shorthand** for `methods` (**as do
+    all other methods in the `Class`**)
+  - it **assigns the arguments** to local variables **exactly like** in a
+    `function constructor`
+  - **NO COMMA AFTER THE CONSTRUCTOR FUNCTION OR OTHER METHODS**
+
+```js
+class Dog {
+  constructor(name, breed) {
+    this.name = name
+    this.breed = breed
+  } // <-- NO COMMA
+}
+```
+
+- Any `method` that you normally placed on the `prototype` now is added to the
+  `Class` as a `method`
+  - **NOTE** that is is **still being added to the `prototype`**, this new form
+    is just **syntactic sugar**
+
+```js
+class Dog {
+  constructor(name, breed) {
+    this.name = name
+    this.breed = breed
+  } // <-- NO COMMA
+  bark() {
+    console.log(`Bark! My name is ${this.name}`)
+  }
+}
+```
+
+- **`Static Methods`** are called on the `Class` itself, **NOT** from the
+  instances
+- **`GETTERS and SETTERS`** define (set) properties or retrieve (get) them
+  - They can **manipulate the properties** during setting and getting
+  - They are **used exactly like properties**, though **operate as methods**
+  - **see the code files**
+- **`Extend`** a `Class` with the `extends` keyword
+  - within the `constructor` you then need to include the `super()` method which
+    is basically calling the `constructor` of the parent `Class`
+
+```js
+class Animal {
+  constructor(name) {
+    this.name = name
+  }
+  animalMethod() {
+    console.log(`Animal thing`)
+  }
+
+class Dog extends Animal {
+  constructor(name, breed) {
+    super(name)
+    this.breed = breed
+  }
+  dogOnlyMethod() {
+    console.log(`Dog only thing`)
+  }
+}
+```
+
+- **Rewatch video on 'Extending Arrays with Classes for Custom Collections'**
+  - interesting how you can make a custom `Class` into an extension of an
+    `Array` object and then add some extra features (looks similar to how React
+    works)
