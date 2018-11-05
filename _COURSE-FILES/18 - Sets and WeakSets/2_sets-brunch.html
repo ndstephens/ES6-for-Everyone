@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Brunch with Sets</title>
+  </head>
+
+  <body>
+    <script>
+
+      // Lesson here is that you can still add to the Iterator even while you're stepping through it.  The Iterator remembers its spot from previous next() call
+
+      // Create a new Set
+      const brunch = new Set();
+
+      // as people start coming in, add them to the seating queue
+      brunch.add( 'wes' );
+      brunch.add( 'Sarah' );
+      brunch.add( 'Simone' );
+
+      // ready to open! Create a Generator to step through queue
+      const line = brunch.values();
+
+      // begin to step through w/ next() as people are seated
+      console.log( line.next().value );
+      console.log( line.next().value );
+
+      // add more people to the queue
+      brunch.add( 'Heather' );
+      brunch.add( 'Snickers' );
+
+      // seat more people (step through Generator)
+      console.log( line.next().value );
+      console.log( line.next().value );
+      console.log( line.next().value );
+
+    </script>
+  </body>
+
+</html>

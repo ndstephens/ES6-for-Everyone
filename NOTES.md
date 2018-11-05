@@ -370,3 +370,22 @@ class Dog extends Animal {
 ## Proxies
 
 - will review proxies again at another time (look very useful)
+
+## Sets and WeakSets
+
+- **`Sets`** are a list of items that will only hold **unique values**
+  - however **not really like an array** in that you **can't access the values
+    individually** and it's **not index based**
+  - you can still **add** to it, **remove** from it, and **loop** over it
+  - can also use it like a `Generator`
+- **`WeakSet`** is similar to a `Set` with some **limitations/benefits**
+  - **can only contain `OBJECTS`**
+  - **can NOT loop over it (no `for-of` loop)**
+    - does not contain an `Iterator`
+  - WeakSets have **automatic garbage collection**
+    - the objects within the WeakSet are **references** to objects that live
+      **outside of the WeakSet**. If one of those external objects is
+      **deleted** or set to `null`, the reference within the WeakSet is of
+      course aware of this and allows itself to be **garbage collected**
+      (removed). Otherwise you'd have a memory leak.
+  - which is why it does **NOT** have a `.clear()` method

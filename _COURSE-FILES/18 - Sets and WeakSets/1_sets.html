@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Sets</title>
+  </head>
+
+  <body>
+    <script>
+      // Create a Set
+      const people = new Set();
+
+      // add items to it
+      people.add( 'Wes' );
+      people.add( 'Snickers' );
+      people.add( 'Kait' );
+      people.add( 'nobody' )
+
+      // delete (remove) an item
+      people.delete( 'nobody' )
+
+      // can clear a Set (remove everything)
+      // people.clear()
+
+      // check its size (length)
+      console.log( people.size ) // not a 'length' property b/c it's not indexed
+
+      // check if an item already exists
+      people.has( 'Wes' ) // true
+      people.has( 'Nate' ) // false
+
+      // *** access its values (that returns an Iterator, which means...)
+      people.values()
+      // people.keys() is the exact same!! b/c with Sets their keys and values are the exact same
+
+      // *** can treat it like a Generator
+      const peopleGen = people.values()
+      console.log( peopleGen.next() )
+      console.log( peopleGen.next() )
+      console.log( peopleGen.next() )
+      console.log( peopleGen.next() )
+
+      // *** AND can loop through it
+      for ( const person of people ) {
+        console.log( person );
+      }
+
+      //
+      //
+      // Can also create a new Set by just passing it an array
+      const students = new Set( ['Wes', 'Kara', 'Tony', 'Wes'] );
+      // will only keep one of the items 'Wes'
+
+      // pass it an already existing array
+      const dogs = ['Snickers', 'Sunny'];
+      const dogSet = new Set( dogs );
+
+    </script>
+  </body>
+
+</html>
