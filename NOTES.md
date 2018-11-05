@@ -366,3 +366,7 @@ class Dog extends Animal {
       after the **last `yield` statement**)
     - `done` is **`true`** if the `Generator` is complete
 - Work great with `for-of` loops
+
+## Proxies
+
+- will review proxies again at another time (look very useful)
