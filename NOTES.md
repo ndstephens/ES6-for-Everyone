@@ -389,3 +389,20 @@ class Dog extends Animal {
       course aware of this and allows itself to be **garbage collected**
       (removed). Otherwise you'd have a memory leak.
   - which is why it does **NOT** have a `.clear()` method
+
+## Maps and WeakMaps
+
+- **`Maps`** are similar to Objects with a very simple API
+  - **SOME BENEFITS ARE:**
+  - their `keys` and `values` can hold anything
+  - **can use `for-of` loops** as well as `forEach()` loops
+  - you can **use an `Object` as the `key`** in a `Map`
+    - you can then **hold information about that Object in the `value`** (could
+      even be an **object of information**)
+    - basically hold meta-data ABOUT the object **along with the object** (in
+      the Map's value) **INSTEAD OF WITHIN THE OBJECT ITSELF**
+- **`WeakMap`**
+  - does not have a size
+  - is not enumerable, can not loop over it
+  - if the items inside the WeakMap no longer exist anywhere else in the
+    application, they will be garbage collected and removed from the WeakMap

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Maps!</title>
+    <style>
+      button {
+        font-size: 50px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <button>Snakes 🐍</button>
+    <button>Cry 😂</button>
+    <button>Ice Cream 🍦</button>
+    <button>Flamin' 🔥</button>
+    <button>Dancer 💃</button>
+
+
+    <script>
+      // Create a Map to hold how many times each button has been clicked
+      // The button Node Element itself will be the key
+
+      // create a map
+      const clickCounts = new Map();
+      // grab all the buttons
+      const buttons = document.querySelectorAll( 'button' );
+
+      // loop through all the buttons
+      buttons.forEach( button => {
+        // add each one to the Map, the button itself being the key
+        clickCounts.set( button, 0 );
+        // add a click event listener to each
+        button.addEventListener( 'click', function () {
+          // when clicked: get the item from the Map with the key equal to the button being clicked
+          const val = clickCounts.get( this );
+          // update its value by 1
+          clickCounts.set( this, val + 1 );
+          console.log( clickCounts );
+        } );
+      } );
+
+    </script>
+  </body>
+
+</html>
