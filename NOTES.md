@@ -406,3 +406,20 @@ class Dog extends Animal {
   - is not enumerable, can not loop over it
   - if the items inside the WeakMap no longer exist anywhere else in the
     application, they will be garbage collected and removed from the WeakMap
+
+## Async & Await
+
+- **`Async/Await`** is basically built on top of `Promises`
+- It **still uses Promises**, but supplies a **different means of flow control**
+- With `Async/Await` we **'asynchronously wait'** for the values that **come
+  back from the Promises**
+- `Await` can **ONLY** be used within an `Async` function
+  - if you ever need to use **even a single `await`** in a function, there's
+    **no detriment** to turning it into an **`async` function**
+- **`await` waits for the Promise to resolve or reject** before sending anything
+  onto the variable it's assigned to
+  - the value that is 'resolved' from the promise is **sent to the
+    variable...not sent onto a 'then()' statement** like with Promise chaining
+- **SEE CODE FILE FOR INFO AND EXAMPLES ON ERROR HANDLING**
+- **SEE CODE FILE FOR INFO AND EXAMPLES ON HANDLING MULTIPLE PROMISES**
+- **SEE CODE FILE FOR INFO AND EXAMPLES ON 'PROMISIFYING' CALLBACK FUNCTIONS**

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>Native Promises</title>
+  </head>
+
+  <video controls class="handsome"></video>
+
+  <body>
+    <script>
+
+      // Using Native Promises
+
+      // fetch('https://api.github.com/users/wesbos').then(res => {
+      //   return res.json();
+      // }).then(res => {
+      //   console.log(res);
+      // }).catch(err => {
+      //   console.error('OH NOO!!!!!!!');
+      //   console.error(err);
+      // })
+
+      //
+      // grab video element
+      const video = document.querySelector( '.handsome' );
+
+      // ask to access the user's webcam (agree goes to 'then', deny goes to 'catch')
+      navigator.mediaDevices.getUserMedia( { video: true } )
+        .then( mediaStream => {
+          // the newer way of sending the data stream from the webcam to the video player (different than older JavaScript-30 method)
+          video.srcObject = mediaStream;
+          video.load();
+          video.play();
+        } ).catch( err => {
+          console.log( err );
+        } )
+    </script>
+  </body>
+
+</html>

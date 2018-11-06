@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>Async Await</title>
+  </head>
+
+  <body>
+    <script>
+
+      // Async/Await still works with Promises and the Promises are constructed the same way.  Async/Await is basically built on top of Promises.  We 'asynchronously wait' for the values that come back from the Promises
+
+      // This 'breathe' function, that returns a Promise, is the exact same as in the previous file.
+      function breathe( amount ) {
+        return new Promise( ( resolve, reject ) => {
+          if ( amount < 500 ) {
+            reject( 'That is too small of a value' );
+          }
+          setTimeout( () => resolve( `Done for ${amount} ms` ), amount );
+        } );
+      }
+
+      //
+      // Await can ONLY be used within an Async function
+      // if you ever need to use even a single 'await' in a function, there's no detriment to turning it into an 'async' function
+      async function go( name, last ) {
+        console.log( `Starting for ${name} ${last}!` );
+        // the value that is 'resolved' from the promise function, 'breathe', is sent to the variable 'res'...not sent onto a 'then()' statement like with Promise chaining
+        // 'await' waits for the Promise to resolve or reject before sending anything onto the variable it's assigned to ('res')
+        const res = await breathe( 1000 );
+        console.log( res );
+        const res2 = await breathe( 300 );
+        console.log( res2 );
+        const res3 = await breathe( 750 );
+        console.log( res3 );
+        const res4 = await breathe( 900 );
+        console.log( res4 );
+        console.log( 'end' );
+      }
+
+
+      // ERROR HANDLING
+      // One way (old school) is to wrap everything in the async function in a 'try' block, followed then by a 'catch' block if there are errors (see below)
+      // That is still very useful for specific and simpler error handling
+
+      // BUT instead...we can use a High Order Function.  It wraps over another function(s) and can act as a 'catch-all' for errors
+      // Great for handling multiple errors in a similar way w/o having to write a lot of try-catch statements
+
+      // the High Order Function for error catching/handling
+      // returns a function that can accept any number of arguments and assigns it to a variable (that assigned variable/function also now houses the 'fn' function that was passed in)
+      // when that assigned variable/function is called, its arguments are passed onto 'fn' and 'fn' is called/ran
+      // now it's like calling 'fn' directly, but with 'fn' having a 'catch' block attached to it for error handling
+      function catchErrors( fn ) {
+        return function ( ...args ) {
+          return fn( ...args ).catch( ( err ) => {
+            console.error( 'Ohhhh nooo!!!!!' );
+            console.error( err );
+          } );
+        }
+      }
+
+      // turns 'wrappedFunction' into a function that can accept any number of arguments, and houses the function 'go'
+      const wrappedFunction = catchErrors( go );
+
+      // when called, it will pass its arguments onto 'go' and 'go' is called/ran
+      // it's the same as running 'go' directly, but now with a 'catch' block assigned to it for error handling.
+      wrappedFunction( 'Wes', 'Bos' );
+
+
+
+
+      // OLD SCHOOL ERROR HANDLING
+/*       async function go( name, last ) {
+        try {
+          console.log( `Starting for ${name} ${last}!` );
+          const res = await breathe( 1000 );
+          console.log( res );
+          const res2 = await breathe( 300 );
+          console.log( res2 );
+          const res3 = await breathe( 750 );
+          console.log( res3 );
+          const res4 = await breathe( 900 );
+          console.log( res4 );
+          console.log( 'end' );
+        } catch ( err ) {
+          console.error( 'Ohhhh nooo!!!!!' );
+          console.error( err );
+        }
+      }
+
+      go()
+ */
+
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>Promisifying Callback Based Functions</title>
+  </head>
+
+  <body>
+    <script>
+
+      // HOW TO "PROMISIFY" CODE THAT IS ONLY SET UP TO ACCEPT CALL-BACKS
+
+      // a call-back based function
+      // first arg is a success cb function, second argument is a failure cb
+
+      /*       navigator.geolocation.getCurrentPosition(
+              function ( pos ) {
+                console.log( 'CB worked!' );
+                console.log( 'CB: ' + pos );
+              }, function ( err ) {
+                console.log( 'CB failed!' );
+                console.log( err );
+              } );
+       */
+
+
+      // now to Promisify it
+      // create a function (of same name) that returns a Promise
+      // inside of the Promise call your cb-based function
+      // pass in 'resolve' for the success function, and 'reject' for the fail
+      // NOTE: 'getCurrentPosition' can take in optional arguments first (see docs)
+      function getCurrentPosition( ...args ) {
+        return new Promise( ( resolve, reject ) => {
+          navigator.geolocation.getCurrentPosition( ...args, resolve, reject );
+        } );
+      }
+
+      async function go() {
+        console.log( 'Async starting' );
+        const pos = await getCurrentPosition();
+        console.log( 'Async: ' + pos );
+        console.log( 'Async finished' );
+      }
+
+      go();
+
+      // THERE ARE LIBRARIES TO DO THIS AS WELL (ES6-PROMISIFY)
+      // NODE HAS IT BUILT IN UNDER THE 'UTIL' LIBRARY
+
+    </script>
+  </body>
+
+</html>

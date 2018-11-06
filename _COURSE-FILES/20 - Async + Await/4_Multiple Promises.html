@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>Async Await</title>
+  </head>
+
+  <body>
+    <script>
+      async function go() {
+        // assign each variable to a Promise
+        // DON'T put 'await' in front of 'fetch' or you will block the execution of the second one until after the first one resolves
+        const p1 = fetch( 'https://api.github.com/users/wesbos' );
+        const p2 = fetch( 'https://api.github.com/users/stolinski' );
+        // put them into an array literal and wait for both to resolve
+        const res = await Promise.all( [p1, p2] );
+        // create an array of two Promises (again, no 'await')
+        const dataPromises = res.map( r => r.json() );
+        // wait for both to resolve, with array destructuring grabbing the result
+        const [wes, scott] = await Promise.all( dataPromises );
+        console.log( wes, scott );
+      }
+      // call the async function
+      go();
+
+
+      // A BETTER WAY !!!
+      // 1. Create an array of Promises (of unlimited length) with help of template strings
+      // 2. attach a 'then()' statement on each for transformation of resolved data into JSON, also Promises (turning three steps up above into one step here)
+      // 3. send entire array to 'Promise.all()' and 'await' result
+      async function getData( names ) {
+        const promises = names.map( name => fetch( `https://api.github.com/users/${name}` )
+          .then( r => r.json() ) );
+        const people = await Promise.all( promises );
+        console.log( people );
+      }
+      // call async function
+      getData( ['wesbos', 'stolinski', 'darcyclarke'] );
+
+    </script>
+  </body>
+
+</html>
