@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>String padStart and padEnd</title>
+  </head>
+
+  <body>
+    <script>
+
+      const strings = ['short', 'this is really really long', 'medium size', 'this is really really really really really really long'];
+
+      // sort the strings in the array, from longest to shortest, and grab the length of the now first one (longest)
+      const longestStringLength = strings.sort( ( str1, str2 ) => str2.length - str1.length )[0].length;
+
+      // print all the strings, using a padStart value based on the longest string so they all line up right-aligned
+      strings.forEach( str => {
+        console.log( str.padStart( longestStringLength ) )
+      } );
+
+    </script>
+  </body>
+
+</html>

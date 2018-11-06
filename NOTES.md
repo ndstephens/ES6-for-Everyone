@@ -423,3 +423,30 @@ class Dog extends Animal {
 - **SEE CODE FILE FOR INFO AND EXAMPLES ON ERROR HANDLING**
 - **SEE CODE FILE FOR INFO AND EXAMPLES ON HANDLING MULTIPLE PROMISES**
 - **SEE CODE FILE FOR INFO AND EXAMPLES ON 'PROMISIFYING' CALLBACK FUNCTIONS**
+
+## ES2016++
+
+- **`Class Properties`** also known as **Class Initializers**
+  - **Instead** of putting it in the constructor, **you create it right on the
+    class** (but **without** the `this` keyword...same as the methods)
+    - only initialize properties with `this` in the `constructor`
+  - **Basically used for properties that are NOT getting their initial value
+    FROM the constructor call**
+  - Still accessed anywhere in the `class` using the `this` keyword
+- **`PadStart` and `PadEnd`**
+  - not really intended for stylistic purposes, **usually for adding leading
+    characters, such as '0's for multi-digit numbers, or trailing '0's so all
+    decimals have equal lengths**
+  - see code file notes and maybe rewatch video. pretty simple overall
+- **`Exponential Operator`**
+  - used to use Math.pow(3,2) === 9
+  - now it's 3\*\*2 === 9
+  - can also use several in a row, unlike Math.pow()
+    - 2\*\*2\*\*2 === 16 same as...
+    - 2\*\*2 === 4, then 4\*\*2 === 16
+- **`Object.values() and Object.entries()`**
+  - work just like `Object.keys()` that we already had
+  - **all return an array, of either the keys, values, or both (an array of
+    arrays)**
+  - all are `Iterables` (since they're arrays) so you can use the `for-of` loop
+    - therefore able to use `break` and `continue`
